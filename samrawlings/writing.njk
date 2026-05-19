@@ -1,0 +1,21 @@
+---
+layout: base.njk
+title: writing
+description: Posts by Sam Rawlings.
+permalink: /writing/
+---
+
+<div class="breadcrumb">
+  <a href="/">home</a>
+  <span class="sep">/</span>
+  writing
+</div>
+
+<h1>writing</h1>
+
+{% for post in collections.posts %}
+  <a class="row" href="{{ post.url }}">
+    <span class="row-title">{{ post.data.title }}</span>
+    <span class="row-meta">{{ post.date | shortDate }}</span>
+  </a>
+{% endfor %}

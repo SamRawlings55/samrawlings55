@@ -1,0 +1,43 @@
+---
+layout: base.njk
+title: photos
+description: Photos from Sam Rawlings.
+permalink: /photos/
+---
+
+<div class="breadcrumb">
+  <a href="/">home</a>
+  <span class="sep">/</span>
+  photos
+</div>
+
+<h1>photos</h1>
+
+<div class="filter-tabs">
+  <a class="active" onclick="filterPhotos('all', this)">all</a>
+  <a onclick="filterPhotos('travel', this)">travel</a>
+  <a onclick="filterPhotos('film', this)">film</a>
+</div>
+
+<div class="photo-grid" id="grid">
+{% for photo in photos %}
+  <div class="photo-item" data-cat="{{ photo.category }}">
+    {% if photo.file %}
+    <img src="/photos/{{ photo.file }}" alt="{{ photo.caption }}">
+    {% else %}
+    <div class="photo-placeholder">{{ photo.caption }}<br><span style="font-size:10px;opacity:0.6">add photo file: {{ photo.file or "filename.jpg" }}</span></div>
+    {% endif %}
+    <span class="photo-caption">{{ photo.caption }}</span>
+  </div>
+{% endfor %}
+</div>
+
+<script>
+function filterPhotos(type, el) {
+  document.querySelectorAll('.filter-tabs a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#grid .photo-item').forEach(item => {
+    item.style.display = (type === 'all' || item.dataset.cat === type) ? 'block' : 'none';
+  });
+}
+</script>

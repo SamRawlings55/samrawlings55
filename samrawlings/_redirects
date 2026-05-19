@@ -1,0 +1,8 @@
+# Redirects from the old hand-coded site to the new generated URLs.
+# Add new redirects above this line if you ever rename a post.
+
+/posts/rationale-appetite-for-cringe.html  /posts/rationale/             301
+/writing.html                              /writing/                     301
+/shelf.html                                /shelf/                       301
+/photos.html                               /photos/                      301
+/index.html                                /                             301

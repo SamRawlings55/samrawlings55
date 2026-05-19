@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: shelf
+description: Books, films, and albums.
+permalink: /shelf/
+---
+
+<div class="breadcrumb">
+  <a href="/">home</a>
+  <span class="sep">/</span>
+  shelf
+</div>
+
+<h1>shelf</h1>
+
+<div class="filter-tabs">
+  <a class="active" onclick="filter('all', this)">all</a>
+  <a onclick="filter('book', this)">books</a>
+  <a onclick="filter('film', this)">films</a>
+  <a onclick="filter('album', this)">albums</a>
+</div>
+
+{% for item in shelf %}
+  <div class="row" data-type="{{ item.type }}">
+    <div class="row-left">
+      {% if item.link %}
+      <a class="row-title" href="{{ item.link }}" target="_blank">{{ item.title }}{% if item.author %} — {{ item.author }}{% endif %}</a>
+      {% else %}
+      <span class="row-title">{{ item.title }}{% if item.author %} — {{ item.author }}{% endif %}</span>
+      {% endif %}
+      {% if item.note %}<span class="row-desc">{{ item.note }}</span>{% endif %}
+    </div>
+    <div class="row-right">
+      <span class="row-meta">{{ item.type }}</span>
+      <span class="stars">{{ item.rating | stars }}</span>
+    </div>
+  </div>
+{% endfor %}
+
+<script>
+function filter(type, el) {
+  document.querySelectorAll('.filter-tabs a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.row[data-type]').forEach(row => {
+    row.style.display = (type === 'all' || row.dataset.type === type) ? 'flex' : 'none';
+  });
+}
+</script>

@@ -1,0 +1,12 @@
+{
+  "name": "samrawlings",
+  "version": "1.0.0",
+  "description": "Sam Rawlings personal site",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
