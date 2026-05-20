@@ -1,6 +1,6 @@
 ---
-title: Rationale
-date: 2026-04-07
+title: Hello, World!
+date: 2026-05-20
 ---
 
 This is a placeholder paragraph. Open this file, find this text, and replace it with your actual writing.
